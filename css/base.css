@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Reset, wallpaper, global behaviour
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100svh;
+  background: var(--md-background);
+  color: var(--md-on-surface);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-optical-sizing: auto;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+code,
+kbd,
+pre {
+  font-family: var(--font-mono);
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 38%, transparent);
+  color: var(--md-on-surface);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* --- Wallpaper --------------------------------------------------------- */
+
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 70% at 18% 12%, #1d3f58 0%, transparent 60%),
+    radial-gradient(80% 65% at 82% 18%, #3c3457 0%, transparent 62%),
+    radial-gradient(100% 90% at 50% 100%, #0a171f 0%, #0f1417 70%);
+  pointer-events: none;
+}
+
+.wallpaper__image {
+  position: absolute;
+  inset: -3%;
+  width: 106%;
+  height: 106%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.92) brightness(0.58) contrast(1.04);
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Soft colour wash so the matugen accent bleeds into the wallpaper. */
+.wallpaper__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 55% at 14% 8%, var(--accent-glow), transparent 66%),
+    radial-gradient(60% 55% at 88% 15%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 68%),
+    linear-gradient(180deg, rgba(6, 11, 14, 0.28), rgba(6, 11, 14, 0.72));
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+.wallpaper__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 13, 16, 0.5) 0%, transparent 26%, transparent 62%, rgba(8, 13, 16, 0.74) 100%),
+    radial-gradient(120% 100% at 50% 40%, transparent 35%, rgba(8, 13, 16, 0.35) 100%);
+}
+
+.wallpaper__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+:root[data-theme="light"] .wallpaper__image {
+  filter: saturate(0.8) brightness(1.15) contrast(0.95);
+  opacity: 0.55;
+}
+
+:root[data-theme="light"] .wallpaper__wash {
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+}
+
+:root[data-theme="light"] .wallpaper__scrim {
+  background:
+    linear-gradient(180deg, rgba(245, 250, 253, 0.62) 0%, rgba(245, 250, 253, 0.2) 30%, rgba(245, 250, 253, 0.72) 100%);
+}
+
+:root[data-theme="light"] .wallpaper__grain {
+  opacity: 0.18;
+}
+
+/* --- Shell & helpers --------------------------------------------------- */
+
+.shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 300;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 12px;
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--good);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 18%, transparent);
+  flex: none;
+}
+
+.dot--accent {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* --- Scrollbars -------------------------------------------------------- */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 34%, transparent) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--accent) 34%, transparent);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+/* --- Screen dimmer (brightness slider) -------------------------------- */
+
+.screen-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: #000;
+  opacity: var(--screen-dim);
+  pointer-events: none;
+  transition: opacity 0.18s linear;
+}
+
+/* --- Motion preferences ------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body[data-motion="off"] *,
+body[data-motion="off"] *::before,
+body[data-motion="off"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+body[data-motion="off"] {
+  scroll-behavior: auto;
+}

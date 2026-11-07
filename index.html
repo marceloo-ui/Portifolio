@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-accent="sky">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f1417" />
+  <meta name="description" content="Avery Quinn — creative developer and Linux ricing enthusiast. A portfolio built to feel like a Quickshell desktop." />
+  <title>Marcelo Augusto — CyBR</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f1417'/%3E%3Cpath d='M9 10l6 6-6 6' fill='none' stroke='%238fcef3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 22h6' stroke='%238fcef3' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/material-symbols-rounded.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/overlays.css" />
+
+  <script>
+    // Apply saved theme before paint so there is no flash.
+    document.documentElement.classList.add("js");
+    try {
+      const saved = JSON.parse(localStorage.getItem("etternalize.prefs") || "{}");
+      if (saved.theme === "light") document.documentElement.dataset.theme = "light";
+      if (saved.accent) document.documentElement.dataset.accent = saved.accent;
+    } catch { /* localStorage unavailable — defaults are fine */ }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Pule para o Conteudo</a>
+
+  <!-- Wallpaper stack ------------------------------------------------ -->
+  <div class="wallpaper" aria-hidden="true">
+    <img class="wallpaper__image" src="assets/wallpaper.webp" alt="" decoding="async" fetchpriority="high" />
+    <div class="wallpaper__wash"></div>
+    <div class="wallpaper__scrim"></div>
+    <div class="wallpaper__grain"></div>
+  </div>
+  <div class="screen-dim" aria-hidden="true"></div>
+
+  <div class="shell">
+    <!-- Top bar ------------------------------------------------------ -->
+    <header class="topbar">
+      <div class="topbar__inner">
+        <nav class="workspaces" aria-label="Jump to section">
+          <a class="workspace" href="#home" data-nav="home" aria-label="Home" title="Home"><span>01</span></a>
+          <a class="workspace" href="#work" data-nav="work" aria-label="Selected work" title="Selected work"><span>02</span></a>
+          <a class="workspace" href="#about" data-nav="about" aria-label="About" title="About"><span>03</span></a>
+          <a class="workspace" href="#contact" data-nav="contact" aria-label="Contact" title="Contact"><span>04</span></a>
+        </nav>
+
+        <button class="bar-clock" type="button" data-open="launcher" aria-label="Open command palette (Ctrl K)">
+          <span class="bar-clock__time" id="clock">--:--</span>
+          <span class="bar-clock__date" id="clock-date">Carregando</span>
+        </button>
+
+        <div class="tray">
+          <span class="tray__meter" aria-hidden="true">
+            <span class="ms">wifi</span>
+            <span class="ms">volume_up</span>
+            <span class="ms">battery_5_bar</span>
+          </span>
+          <span class="tray__status"><span class="dot"></span>online</span>
+          <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to light theme">
+            <span class="ms" aria-hidden="true">light_mode</span>
+          </button>
+          <button class="icon-btn" type="button" data-open="wallpaper" aria-label="Change wallpaper">
+            <span class="ms" aria-hidden="true">brush</span>
+          </button>
+          <button class="icon-btn" type="button" data-open="settings" aria-label="Quick settings">
+            <span class="ms" aria-hidden="true">tune</span>
+          </button>
+          <button class="icon-btn" type="button" data-open="launcher" aria-label="Search (Ctrl K)">
+            <span class="ms" aria-hidden="true">search</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage" id="main">
+      <!-- Hero ------------------------------------------------------ -->
+      <section class="hero window reveal" id="home" data-section data-icon="home" data-title="Home" data-sub="Intro &amp; availability">
+        <div class="hero__content">
+          <p class="pill"><span class="dot"></span>open to work · Home/Presencial</p>
+          <h1 class="hero__title">Ola, sou Marcelo Augusto, eu crio pequenos e <em>over-designed</em> projetos.</h1>
+          <p class="hero__lede">
+            Cibersegurança e GNU/Linux ricing fan. eu gosto de interfaces
+            bonitas.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#work">
+              <span class="ms" aria-hidden="true">grid_view</span>Ver Projetos
+            </a>
+            <a class="btn btn--ghost" href="#" download>
+              <span class="ms" aria-hidden="true">arrow_forward</span>Baixar Curriculo
+            </a>
+          </div>
+
+          <div class="hero__meta mono">
+            <span><span class="ms" aria-hidden="true">location_on</span>Earth · Brasil · SP · Gru</span>
+            <span><span class="ms" aria-hidden="true">calendar_month</span>arrumando esse site.</span>
+            <span><span class="ms" aria-hidden="true">check</span>Pronto para Estágio</span>
+          </div>
+        </div>
+
+        <div class="hero__side reveal">
+          <div class="syscard">
+            <div class="syscard__bar">
+              <span class="light light--red"></span>
+              <span class="light light--yellow"></span>
+              <span class="light light--green"></span>
+              <span class="syscard__title">maid@marceloo-ui: ~/portfolio</span>
+            </div>
+            <div class="syscard__body mono">
+              <p><span class="prompt">$</span> whoami</p>
+              <p class="out">marceloo-ui</p>
+              <p><span class="prompt">$</span> cat role.txt</p>
+              <p class="out">opsec · linux ricer</p>
+              <p><span class="prompt">$</span> ls stack/</p>
+              <p class="out out--accent">html css js</p>
+              <p><span class="prompt">$</span> uptime</p>
+              <p class="out ok">19 anos<span class="cursor" aria-hidden="true"></span></p>
+            </div>
+            <div class="now">
+              <span class="now__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="now__track">Sinner <span class="muted">/ Deafheaven</span></span>
+              <span class="now__time mono">3:12</span>
+            </div>
+          </div>
+
+          <div class="hero__note mono">
+            <span class="ms" aria-hidden="true">keyboard_command_key</span>
+            aperte <kbd>ctrl</kbd> <kbd>k</kbd> para ir para qualquer lugar
+          </div>
+        </div>
+      </section>
+      <!-- Selected work --------------------------------------------- -->
+      <section class="section" id="work" data-section data-icon="grid_view" data-title="Selected work" data-sub="Projects &amp; experiments">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <p class="eyebrow">02 — Selecione o Projeto</p>
+            <h2 class="section-title">Coisas que eu fiz</h2>
+            <p class="section-sub">PLACEHOLDERPLACEHOLDERPLACEHOLDERPLACEHOLDERPLACEHOLDERPLACEHOLDERPLACEHOLDER</p>
+          </div>
+          <div class="section-tools">
+            <div class="filters" role="group" aria-label="Filter projects">
+              <button class="filter" type="button" data-filter="all" aria-pressed="true">all</button>
+              <button class="filter" type="button" data-filter="web" aria-pressed="false">web</button>
+              <button class="filter" type="button" data-filter="systems" aria-pressed="false">systems</button>
+              <button class="filter" type="button" data-filter="design" aria-pressed="false">design</button>
+            </div>
+            <span class="work-count mono" id="work-count" aria-live="polite">6 projects</span>
+          </div>
+        </div>
+
+        <div class="projects">
+          <a class="project" href="#" data-category="web" data-title="maidMod" data-sub="Portfolio shell · 2026">
+            <div class="project__top">
+              <span class="project__icon"><span class="ms" aria-hidden="true">grid_view</span></span>
+              <span class="project__index mono">01</span>
+            </div>
+            <h3 class="project__title">maidMod</h3>
+            <p class="project__desc">A portfolio that pretends to be a Quickshell desktop — glass, grids, and a command palette.</p>
+            <div class="project__tags"><span class="tag">html</span><span class="tag">css</span><span class="tag">js</span></div>
+            <div class="project__foot"><span class="mono">2026</span><span class="project__arrow"><span class="ms" aria-hidden="true">arrow_outward</span></span></div>
+          </a>
+
+          <a class="project" href="#" data-category="systems" data-title="dots-hyprland rice" data-sub="Dotfiles · 2026">
+            <div class="project__top">
+              <span class="project__icon"><span class="ms" aria-hidden="true">folder_open</span></span>
+              <span class="project__index mono">02</span>
+            </div>
+            <h3 class="project__title">dots-hyprland rice</h3>
+            <p class="project__desc">A personal fork of end-4's dotfiles with extra QML widgets, a custom bar, and a warmer palette.</p>
+            <div class="project__tags"><span class="tag">qml</span><span class="tag">quickshell</span><span class="tag">hyprland</span></div>
+            <div class="project__foot"><span class="mono">2026</span><span class="project__arrow"><span class="ms" aria-hidden="true">arrow_outward</span></span></div>
+          </a>
+
+          <a class="project" href="#" data-category="design" data-title="matugen palette lab" data-sub="Design tooling · 2025">
+            <div class="project__top">
+              <span class="project__icon"><span class="ms" aria-hidden="true">palette</span></span>
+              <span class="project__index mono">03</span>
+            </div>
+            <h3 class="project__title">matugen palette lab</h3>
+            <p class="project__desc">Wallpaper-to-Material-You palette generator with live previews and copyable CSS tokens.</p>
+            <div class="project__tags"><span class="tag">material you</span><span class="tag">color</span></div>
+            <div class="project__foot"><span class="mono">2025</span><span class="project__arrow"><span class="ms" aria-hidden="true">arrow_outward</span></span></div>
+          </a>
+
+          <a class="project" href="#" data-category="systems" data-title="KernelStuff.asm" data-sub="Low-level experiments · 2025">
+            <div class="project__top">
+              <span class="project__icon"><span class="ms" aria-hidden="true">memory</span></span>
+              <span class="project__index mono">04</span>
+            </div>
+            <h3 class="project__title">Nix-SETUP</h3>
+            <p class="project__desc">Config base minha para sistemas em NixOS.</p>
+            <div class="project__tags"><span class="tag">nix</span><span class="tag">flake</span><span class="tag">NixOS</span></div>
+            <div class="project__foot"><span class="mono">2025</span><span class="project__arrow"><span class="ms" aria-hidden="true">arrow_outward</span></span></div>
+          </a>
+
+          <a class="project" href="#" data-category="web" data-title="launcher" data-sub="Command palette · 2025">
+            <div class="project__top">
+              <span class="project__icon"><span class="ms" aria-hidden="true">terminal</span></span>
+              <span class="project__index mono">05</span>
+            </div>
+            <h3 class="project__title">launcher</h3>
+            <p class="project__desc">A fuzzy command palette in a few kilobytes of vanilla JavaScript. The one you're using now.</p>
+            <div class="project__tags"><span class="tag">javascript</span><span class="tag">a11y</span></div>
+            <div class="project__foot"><span class="mono">2025</span><span class="project__arrow"><span class="ms" aria-hidden="true">arrow_outward</span></span></div>
+          </a>
+
+          <a class="project" href="#" data-category="design" data-title="wallpaper engine" data-sub="CSS experiments · 2024">
+            <div class="project__top">
+              <span class="project__icon"><span class="ms" aria-hidden="true">brush</span></span>
+              <span class="project__index mono">06</span>
+            </div>
+            <h3 class="project__title">wallpaper engine</h3>
+            <p class="project__desc">CSS-only wallpapers driven by a single accent token — no images, no canvas, no loading.</p>
+            <div class="project__tags"><span class="tag">css</span><span class="tag">gradients</span></div>
+            <div class="project__foot"><span class="mono">2024</span><span class="project__arrow"><span class="ms" aria-hidden="true">arrow_outward</span></span></div>
+          </a>
+        </div>
+      </section>
+      <!-- About ----------------------------------------------------- -->
+      <section class="section" id="about" data-section data-icon="person" data-title="About" data-sub="Bio, skills &amp; setup">
+        <div class="section-head reveal">
+          <div class="section-head__text">
+            <p class="eyebrow">03 — about</p>
+            <h2 class="section-title">The person behind the blur</h2>
+            <p class="section-sub">Half front-end developer, half desktop ricer. Mostly one long excuse to tweak border radii.</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="window about-card reveal">
+            <p>
+              I'm Avery, a developer who cares a lot about how software <em>feels</em>.
+              I started out customising Linux desktops, fell down the Material You rabbit hole,
+              and ended up building interfaces for the web with the same obsession.
+            </p>
+            <p>
+              These days I split my time between client work, small open-source tools, and
+              rebuilding my own setup for the fourth time this year. If it has a blur radius,
+              a tasteful monospace label, and a keyboard shortcut, I'm interested.
+            </p>
+
+            <div class="skills">
+              <div class="skill-group">
+                <p class="skill-group__name">interfaces</p>
+                <div class="chips">
+                  <span class="chip chip--accent">html</span><span class="chip chip--accent">css</span>
+                  <span class="chip chip--accent">javascript</span><span class="chip">typescript</span>
+                  <span class="chip">qml / quickshell</span><span class="chip">react</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="skill-group__name">systems</p>
+                <div class="chips">
+                  <span class="chip">arch linux</span><span class="chip">hyprland</span>
+                  <span class="chip">bash</span><span class="chip">nix</span>
+                  <span class="chip">git</span><span class="chip">docker</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="skill-group__name">craft</p>
+                <div class="chips">
+                  <span class="chip">material you</span><span class="chip">motion</span>
+                  <span class="chip">typography</span><span class="chip">accessibility</span>
+                  <span class="chip">design tokens</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="window about-side reveal" aria-label="Setup and current status">
+            <div>
+              <p class="skill-group__name">daily driver</p>
+              <dl class="setup">
+                <div class="setup-row"><dt>os</dt><dd>arch linux</dd></div>
+                <div class="setup-row"><dt>wm</dt><dd>hyprland</dd></div>
+                <div class="setup-row"><dt>shell</dt><dd>quickshell</dd></div>
+                <div class="setup-row"><dt>editor</dt><dd>neovim</dd></div>
+                <div class="setup-row"><dt>terminal</dt><dd>kitty</dd></div>
+                <div class="setup-row"><dt>theme</dt><dd>matugen</dd></div>
+              </dl>
+            </div>
+            <div>
+              <p class="skill-group__name">currently</p>
+              <ul class="now-list">
+                <li><span class="ms" aria-hidden="true">school</span>Reading <em>The Design of Everyday Things</em></li>
+                <li><span class="ms" aria-hidden="true">audiotrack</span>Listening to <em>Sunbather</em></li>
+                <li><span class="ms" aria-hidden="true">tune</span>Building <em>this portfolio</em></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Contact --------------------------------------------------- -->
+      <section class="section" id="contact" data-section data-icon="mail" data-title="Contact" data-sub="Say hello">
+        <div class="window contact reveal">
+          <p class="eyebrow">04 — contact</p>
+          <h2 class="contact__title">Say hello.</h2>
+          <p class="contact__lede">Freelance projects, collaborations, or just want to argue about window borders? My inbox is open.</p>
+
+          <div class="email-row">
+            <a class="btn btn--primary btn--mail mono" href="mailto:hello@example.com" data-email="hello@example.com">
+              hello@example.com<span class="ms" aria-hidden="true">arrow_outward</span>
+            </a>
+            <button class="btn btn--ghost" type="button" data-copy-email="hello@example.com">
+              <span class="ms" aria-hidden="true">content_copy</span>Copy
+            </button>
+          </div>
+
+          <div class="socials">
+            <a class="social" href="#" aria-label="GitHub"><span class="ms" aria-hidden="true">code</span>github</a>
+            <a class="social" href="#" aria-label="Codeberg"><span class="ms" aria-hidden="true">terminal</span>codeberg</a>
+            <a class="social" href="#" aria-label="Discord"><span class="ms" aria-hidden="true">send</span>discord</a>
+            <a class="social" href="#" aria-label="Fediverse"><span class="ms" aria-hidden="true">email</span>fediverse</a>
+          </div>
+
+          <p class="contact__note mono">pgp on request · replies within 48h</p>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>© <span id="year">2026</span> Avery Quinn</span>
+        <span>vanilla html / css / js · no build step</span>
+        <span>inspired by <a href="https://github.com/end-4/dots-hyprland" target="_blank" rel="noreferrer noopener">end-4/dots-hyprland</a></span>
+        <a class="site-footer__top" href="#home">back to top<span class="ms" aria-hidden="true">expand_less</span></a>
+      </footer>
+    </main>
+
+    <!-- Dock --------------------------------------------------------- -->
+    <nav class="dock" aria-label="Quick navigation">
+      <a class="dock__btn" href="#home" data-nav="home" aria-label="Home" data-label="Home"><span class="ms" aria-hidden="true">home</span></a>
+      <a class="dock__btn" href="#work" data-nav="work" aria-label="Selected work" data-label="Work"><span class="ms" aria-hidden="true">grid_view</span></a>
+      <a class="dock__btn" href="#about" data-nav="about" aria-label="About" data-label="About"><span class="ms" aria-hidden="true">person</span></a>
+      <a class="dock__btn" href="#contact" data-nav="contact" aria-label="Contact" data-label="Contact"><span class="ms" aria-hidden="true">mail</span></a>
+      <span class="dock__divider" aria-hidden="true"></span>
+      <button class="dock__btn" type="button" data-open="launcher" aria-label="Search (Ctrl K)" data-label="Search"><span class="ms" aria-hidden="true">search</span></button>
+      <button class="dock__btn" type="button" data-open="settings" aria-label="Quick settings" data-label="Settings"><span class="ms" aria-hidden="true">tune</span></button>
+    </nav>
+  </div>
+
+  <!-- Command palette ----------------------------------------------- -->
+  <div class="overlay" id="panel-launcher" data-panel="launcher" hidden>
+    <div class="palette" role="dialog" aria-modal="true" aria-labelledby="launcher-label">
+      <label class="sr-only" id="launcher-label" for="launcher-input">Search the site</label>
+      <div class="palette__search">
+        <span class="ms" aria-hidden="true">search</span>
+        <input id="launcher-input" type="text" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="launcher-results" autocomplete="off" spellcheck="false" placeholder="Jump to a section, project, or action…" />
+        <kbd>esc</kbd>
+      </div>
+      <ul class="palette__results" id="launcher-results" role="listbox" aria-label="Results"></ul>
+      <div class="palette__foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> open</span>
+        <span class="mono">maidmod ~ palette</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appearance settings ------------------------------------------- -->
+  <div class="overlay" id="panel-settings" data-panel="settings" hidden>
+    <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <header class="sheet__head">
+        <div>
+          <p class="eyebrow">quick settings</p>
+          <h2 id="settings-title">Appearance</h2>
+        </div>
+        <button class="icon-btn" type="button" data-close aria-label="Close settings"><span class="ms" aria-hidden="true">close</span></button>
+      </header>
+
+      <div class="sheet__body">
+        <div class="setting">
+          <div class="setting__label"><span>Theme</span><small>Wallpaper-matched light or dark surfaces</small></div>
+          <div class="segmented" role="group" aria-label="Theme">
+            <button type="button" data-set-theme="dark"><span class="ms" aria-hidden="true">dark_mode</span>Dark</button>
+            <button type="button" data-set-theme="light"><span class="ms" aria-hidden="true">light_mode</span>Light</button>
+          </div>
+        </div>
+
+        <div class="setting">
+          <div class="setting__label"><span>Accent</span><small>Straight from the matugen palette</small></div>
+          <div class="swatches" role="group" aria-label="Accent colour">
+            <button class="swatch" type="button" data-set-accent="sky" style="--swatch:#8fcef3" aria-label="Sky" title="Sky" aria-pressed="true"></button>
+            <button class="swatch" type="button" data-set-accent="lavender" style="--swatch:#cac1ea" aria-label="Lavender" title="Lavender" aria-pressed="false"></button>
+            <button class="swatch" type="button" data-set-accent="mint" style="--swatch:#9bdcc0" aria-label="Mint" title="Mint" aria-pressed="false"></button>
+            <button class="swatch" type="button" data-set-accent="peach" style="--swatch:#f3c9a8" aria-label="Peach" title="Peach" aria-pressed="false"></button>
+            <button class="swatch" type="button" data-set-accent="rose" style="--swatch:#f0b8c8" aria-label="Rose" title="Rose" aria-pressed="false"></button>
+          </div>
+        </div>
+
+        <div class="setting setting--row">
+          <div class="setting__label"><span>Blur</span><small>Translucent glass surfaces</small></div>
+          <button class="switch" type="button" role="switch" data-toggle="blur" aria-checked="true" aria-label="Blur"><span></span></button>
+        </div>
+
+        <div class="setting setting--row">
+          <div class="setting__label"><span>Motion</span><small>Transitions and ambient animation</small></div>
+          <button class="switch" type="button" role="switch" data-toggle="motion" aria-checked="true" aria-label="Motion"><span></span></button>
+        </div>
+
+        <div class="setting">
+          <div class="setting__label"><span>Brightness</span><small><span id="brightness-value">100%</span></small></div>
+          <input id="brightness" type="range" min="40" max="100" step="1" value="100" aria-label="Screen brightness" />
+        </div>
+      </div>
+
+      <footer class="sheet__foot">
+        <button class="btn btn--ghost btn--small" type="button" data-reset>Reset defaults</button>
+        <span class="mono muted">saved locally</span>
+      </footer>
+    </section>
+  </div>
+
+  <!-- Wallpaper picker ---------------------------------------------- -->
+  <div class="overlay" id="panel-wallpaper" data-panel="wallpaper" hidden>
+    <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="wallpaper-title">
+      <header class="sheet__head">
+        <div>
+          <p class="eyebrow">wallpaper</p>
+          <h2 id="wallpaper-title">Pick a backdrop</h2>
+        </div>
+        <button class="icon-btn" type="button" data-close aria-label="Close wallpaper picker"><span class="ms" aria-hidden="true">close</span></button>
+      </header>
+
+      <div class="wallpaper-grid" role="group" aria-label="Wallpaper choice">
+        <button class="wallpaper-option" type="button" data-set-wallpaper="image" aria-pressed="true" style="--preview:url('assets/wallpaper.webp')">
+          <span class="wallpaper-option__preview"></span>
+          <span class="wallpaper-option__label">Wallpaper<span class="ms" aria-hidden="true">check</span></span>
+        </button>
+        <button class="wallpaper-option" type="button" data-set-wallpaper="aurora" aria-pressed="false" style="--preview:radial-gradient(80% 80% at 20% 10%,#175068,transparent 60%),radial-gradient(70% 70% at 85% 20%,#4a3a72,transparent 65%),#0a131a">
+          <span class="wallpaper-option__preview"></span>
+          <span class="wallpaper-option__label">Aurora<span class="ms" aria-hidden="true">check</span></span>
+        </button>
+        <button class="wallpaper-option" type="button" data-set-wallpaper="ember" aria-pressed="false" style="--preview:radial-gradient(80% 80% at 18% 15%,#6d3220,transparent 62%),radial-gradient(70% 70% at 85% 25%,#55203a,transparent 65%),#140c0b">
+          <span class="wallpaper-option__preview"></span>
+          <span class="wallpaper-option__label">Ember<span class="ms" aria-hidden="true">check</span></span>
+        </button>
+        <button class="wallpaper-option" type="button" data-set-wallpaper="mono" aria-pressed="false" style="--preview:radial-gradient(90% 80% at 20% 10%,#2c3438,transparent 62%),radial-gradient(80% 70% at 82% 20%,#333a3f,transparent 66%),#0b0f11">
+          <span class="wallpaper-option__preview"></span>
+          <span class="wallpaper-option__label">Mono<span class="ms" aria-hidden="true">check</span></span>
+        </button>
+      </div>
+
+      <footer class="sheet__foot">
+        <span class="mono muted">4 backdrops, zero network requests</span>
+        <button class="btn btn--ghost btn--small" type="button" data-close>Done</button>
+      </footer>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="ms" id="toast-icon" aria-hidden="true">check</span>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

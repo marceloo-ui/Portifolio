@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://microsoft.com
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Open index.html",
+            "file": "/home/etternalize/Documents/maidMod/index.html",
+            "firefoxExecutable": "/usr/bin/zen-browser"
+        }
+    ]
+}

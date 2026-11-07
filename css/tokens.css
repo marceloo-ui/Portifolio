@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Design tokens
+   --------------------------------------------------------------------------
+   The palette below is torn straight out of matugen's generated
+   ~/.local/state/quickshell/generated/colors.json, so the site starts out
+   matching the current Hyprland / israshell theme.
+
+   Want a different palette? Change these values, or add a new [data-accent]
+   block and a swatch button in index.html.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* --- M3 dark surface roles ------------------------------------------- */
+  --md-background: #0f1417;
+  --md-surface: #0f1417;
+  --md-surface-container-lowest: #0a0f12;
+  --md-surface-container-low: #181c1f;
+  --md-surface-container: #1c2023;
+  --md-surface-container-high: #262b2e;
+  --md-surface-container-highest: #313539;
+  --md-on-surface: #dfe3e7;
+  --md-on-surface-variant: #c0c7cd;
+  --md-outline: #8a9297;
+  --md-outline-variant: #41484d;
+  --md-secondary: #b5c9d7;
+  --md-secondary-container: #364955;
+  --md-on-secondary-container: #d1e5f4;
+  --md-error: #ffb4ab;
+  --md-on-error-container: #ffdad6;
+
+  /* --- Accent: sky (matugen primary from the current wallpaper) -------- */
+  --accent: #8fcef3;
+  --accent-strong: #c3e8ff;
+  --on-accent: #001e2c;
+  --accent-container: #004c68;
+  --on-accent-container: #c3e8ff;
+  --accent-2: #cac1ea;
+  --accent-2-container: #484264;
+  --on-accent-2-container: #e6deff;
+
+  /* --- Derived surfaces ------------------------------------------------ */
+  --window-bg: color-mix(in srgb, var(--md-surface-container) 78%, transparent);
+  --panel-bg: color-mix(in srgb, var(--md-surface-container) 66%, transparent);
+  --popover-bg: color-mix(in srgb, var(--md-surface-container-high) 86%, transparent);
+  --card-bg: color-mix(in srgb, var(--md-surface-container-high) 48%, transparent);
+  --card-bg-hover: color-mix(in srgb, var(--md-surface-container-highest) 70%, transparent);
+  --input-bg: color-mix(in srgb, var(--md-surface-container-lowest) 55%, transparent);
+  --hairline: color-mix(in srgb, var(--md-on-surface) 9%, transparent);
+  --hairline-strong: color-mix(in srgb, var(--md-on-surface) 15%, transparent);
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
+  --accent-softer: color-mix(in srgb, var(--accent) 8%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 30%, transparent);
+  --muted: color-mix(in srgb, var(--md-on-surface) 60%, transparent);
+  --faint: color-mix(in srgb, var(--md-on-surface) 42%, transparent);
+  --good: #8fe3b0;
+
+  /* --- Shape ----------------------------------------------------------- */
+  --r-window: 26px;
+  --r-card: 18px;
+  --r-control: 12px;
+  --r-pill: 999px;
+
+  /* --- Type ------------------------------------------------------------ */
+  --font-ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Roboto Mono", "JetBrains Mono", ui-monospace, monospace;
+  --text-xs: 10.5px;
+  --text-sm: 12px;
+  --text-md: 13px;
+  --text-lg: 15px;
+
+  /* --- Effects --------------------------------------------------------- */
+  --blur: 24px;
+  --shadow-window:
+    0 28px 80px -30px rgba(0, 0, 0, 0.7),
+    0 8px 24px -16px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 color-mix(in srgb, white 6%, transparent);
+  --shadow-pill:
+    0 12px 34px -20px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 color-mix(in srgb, white 5%, transparent);
+  --ease: cubic-bezier(0.22, 0.78, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --screen-dim: 0;
+}
+
+/* --- Accent variants (dark) -------------------------------------------- */
+
+:root[data-accent="lavender"] {
+  --accent: #cac1ea;
+  --accent-strong: #e6deff;
+  --on-accent: #1c1736;
+  --accent-container: #484264;
+  --on-accent-container: #e6deff;
+  --accent-2: #8fcef3;
+  --accent-2-container: #004c68;
+  --on-accent-2-container: #c3e8ff;
+}
+
+:root[data-accent="mint"] {
+  --accent: #9bdcc0;
+  --accent-strong: #b9f2da;
+  --on-accent: #003825;
+  --accent-container: #00513b;
+  --on-accent-container: #a8f5d4;
+  --accent-2: #cac1ea;
+  --accent-2-container: #484264;
+  --on-accent-2-container: #e6deff;
+}
+
+:root[data-accent="peach"] {
+  --accent: #f3c9a8;
+  --accent-strong: #ffdcbe;
+  --on-accent: #3b220b;
+  --accent-container: #5d3f22;
+  --on-accent-container: #ffdcbe;
+  --accent-2: #cac1ea;
+  --accent-2-container: #484264;
+  --on-accent-2-container: #e6deff;
+}
+
+:root[data-accent="rose"] {
+  --accent: #f0b8c8;
+  --accent-strong: #ffd9e2;
+  --on-accent: #3e001d;
+  --accent-container: #633b46;
+  --on-accent-container: #ffd9e2;
+  --accent-2: #cac1ea;
+  --accent-2-container: #484264;
+  --on-accent-2-container: #e6deff;
+}
+
+/* --- Light theme ------------------------------------------------------- */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --md-background: #f5fafd;
+  --md-surface: #f5fafd;
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #eff4f8;
+  --md-surface-container: #e9eef2;
+  --md-surface-container-high: #e4e9ed;
+  --md-surface-container-highest: #dee3e7;
+  --md-on-surface: #171c1f;
+  --md-on-surface-variant: #40484c;
+  --md-outline: #70787d;
+  --md-outline-variant: #bfc8cc;
+  --md-secondary: #4e616d;
+  --md-secondary-container: #d1e5f4;
+  --md-on-secondary-container: #0a1e28;
+  --md-error: #ba1a1a;
+  --md-on-error-container: #410002;
+
+  /* Sky, but readable on light surfaces */
+  --accent: #006689;
+  --accent-strong: #004c68;
+  --on-accent: #ffffff;
+  --accent-container: #c3e8ff;
+  --on-accent-container: #001e2c;
+  --accent-2: #605a7d;
+  --accent-2-container: #e6deff;
+  --on-accent-2-container: #1c1736;
+
+  --window-bg: color-mix(in srgb, var(--md-surface-container-lowest) 84%, transparent);
+  --panel-bg: color-mix(in srgb, var(--md-surface-container-lowest) 75%, transparent);
+  --popover-bg: color-mix(in srgb, var(--md-surface-container-lowest) 92%, transparent);
+  --card-bg: color-mix(in srgb, var(--md-surface-container-low) 82%, transparent);
+  --card-bg-hover: var(--md-surface-container);
+  --input-bg: color-mix(in srgb, var(--md-surface-container-lowest) 80%, transparent);
+  --muted: color-mix(in srgb, var(--md-on-surface) 62%, transparent);
+  --faint: color-mix(in srgb, var(--md-on-surface) 45%, transparent);
+  --good: #1f7a4c;
+  --shadow-window:
+    0 30px 80px -34px rgba(23, 28, 31, 0.35),
+    0 8px 24px -16px rgba(23, 28, 31, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --shadow-pill:
+    0 12px 34px -22px rgba(23, 28, 31, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+:root[data-theme="light"][data-accent="lavender"] {
+  --accent: #605a7d;
+  --accent-strong: #484264;
+  --on-accent: #ffffff;
+  --accent-container: #e6deff;
+  --on-accent-container: #1c1736;
+  --accent-2: #006689;
+  --accent-2-container: #c3e8ff;
+  --on-accent-2-container: #001e2c;
+}
+
+:root[data-theme="light"][data-accent="mint"] {
+  --accent: #006b4f;
+  --accent-strong: #00513b;
+  --on-accent: #ffffff;
+  --accent-container: #a8f5d4;
+  --on-accent-container: #002116;
+  --accent-2: #605a7d;
+  --accent-2-container: #e6deff;
+  --on-accent-2-container: #1c1736;
+}
+
+:root[data-theme="light"][data-accent="peach"] {
+  --accent: #7a5533;
+  --accent-strong: #5d3f22;
+  --on-accent: #ffffff;
+  --accent-container: #ffdcbe;
+  --on-accent-container: #2c1600;
+  --accent-2: #605a7d;
+  --accent-2-container: #e6deff;
+  --on-accent-2-container: #1c1736;
+}
+
+:root[data-theme="light"][data-accent="rose"] {
+  --accent: #7d4a58;
+  --accent-strong: #633b46;
+  --on-accent: #ffffff;
+  --accent-container: #ffd9e2;
+  --on-accent-container: #31101b;
+  --accent-2: #605a7d;
+  --accent-2-container: #e6deff;
+  --on-accent-2-container: #1c1736;
+}
+
+/* --- Effect toggles ---------------------------------------------------- */
+
+body[data-blur="off"] {
+  --blur: 0px;
+  --window-bg: var(--md-surface-container);
+  --panel-bg: var(--md-surface-container);
+  --popover-bg: var(--md-surface-container-high);
+  --card-bg: var(--md-surface-container-high);
+  --input-bg: var(--md-surface-container-low);
+}

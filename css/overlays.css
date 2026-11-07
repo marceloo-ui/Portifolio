@@ -1,0 +1,534 @@
+/* ==========================================================================
+   Overlays
+   Command palette, appearance sheet, wallpaper picker, toast.
+   ========================================================================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(64px, 12vh, 130px) 16px 24px;
+  overflow-y: auto;
+  background: color-mix(in srgb, #05090b 55%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: overlay-in 0.18s var(--ease);
+}
+
+.overlay[hidden] {
+  display: none !important;
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Command palette --------------------------------------------------- */
+
+.palette {
+  width: min(640px, 100%);
+  overflow: hidden;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 20px;
+  background: var(--popover-bg);
+  box-shadow: var(--shadow-window);
+  backdrop-filter: blur(calc(var(--blur) + 8px)) saturate(1.2);
+  -webkit-backdrop-filter: blur(calc(var(--blur) + 8px)) saturate(1.2);
+  animation: pop-in 0.22s var(--ease);
+}
+
+.palette__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.palette__search > .ms {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.palette__search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+  color: var(--md-on-surface);
+}
+
+.palette__search input::placeholder {
+  color: var(--faint);
+}
+
+.palette__search input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.palette__results {
+  max-height: min(46vh, 400px);
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.palette__item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 11px;
+  border-radius: 11px;
+  cursor: pointer;
+  scroll-margin: 8px;
+}
+
+.palette__item[aria-selected="true"] {
+  background: var(--accent-soft);
+}
+
+.palette__item:not([aria-selected="true"]):hover {
+  background: color-mix(in srgb, var(--md-on-surface) 5%, transparent);
+}
+
+.palette__item > .ms {
+  flex: none;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.palette__item[aria-selected="true"] > .ms {
+  color: var(--accent);
+}
+
+.palette__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.palette__title {
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.palette__sub {
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.palette__kind {
+  margin-left: auto;
+  padding-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+.palette__empty {
+  padding: 28px 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.palette__foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 14px;
+  border-top: 1px solid var(--hairline);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.palette__foot > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.palette__foot .mono {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* --- Sheets ------------------------------------------------------------ */
+
+.sheet {
+  width: min(520px, 100%);
+  overflow: hidden;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 22px;
+  background: var(--popover-bg);
+  box-shadow: var(--shadow-window);
+  backdrop-filter: blur(calc(var(--blur) + 8px)) saturate(1.2);
+  -webkit-backdrop-filter: blur(calc(var(--blur) + 8px)) saturate(1.2);
+  animation: pop-in 0.22s var(--ease);
+}
+
+.sheet__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px 20px 14px;
+}
+
+.sheet__head h2 {
+  margin-top: 5px;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+}
+
+.sheet__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 4px 20px 20px;
+}
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.setting--row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 2px 0;
+}
+
+.setting__label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.setting__label > span {
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.setting__label small {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+/* Segmented control */
+
+.segmented {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--input-bg);
+}
+
+.segmented button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 7px;
+  font-size: 11px;
+  color: var(--muted);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.segmented button .ms {
+  font-size: 15px;
+}
+
+.segmented button[aria-pressed="true"] {
+  background: var(--accent-container);
+  color: var(--on-accent-container);
+}
+
+.segmented button:not([aria-pressed="true"]):hover {
+  color: var(--md-on-surface);
+}
+
+/* Accent swatches */
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border: 1px solid color-mix(in srgb, white 18%, transparent);
+  border-radius: 10px;
+  background: var(--swatch);
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s var(--ease);
+}
+
+.swatch:hover {
+  transform: scale(1.08);
+}
+
+.swatch[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--popover-bg), 0 0 0 4px var(--swatch);
+}
+
+/* Toggle switch */
+
+.switch {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 22px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 999px;
+  background: var(--input-bg);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.switch span {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--muted);
+  transform: translateY(-50%);
+  transition: left 0.22s var(--ease-spring), background 0.2s var(--ease);
+}
+
+.switch[aria-checked="true"] {
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  background: var(--accent-container);
+}
+
+.switch[aria-checked="true"] span {
+  left: 21px;
+  background: var(--on-accent-container);
+}
+
+/* Brightness slider */
+
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  margin: 6px 0;
+  border-radius: 99px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent) var(--fill, 100%),
+    color-mix(in srgb, var(--md-on-surface) 12%, transparent) var(--fill, 100%)
+  );
+  -webkit-appearance: none;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--popover-bg);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--popover-bg);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.sheet__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--hairline);
+}
+
+.sheet__foot .mono {
+  font-size: 9.5px;
+}
+
+.sheet__foot .muted {
+  color: var(--muted);
+}
+
+/* --- Wallpaper picker -------------------------------------------------- */
+
+.wallpaper-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 4px 20px 20px;
+}
+
+.wallpaper-option {
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: var(--card-bg);
+  text-align: left;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.wallpaper-option:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-1px);
+}
+
+.wallpaper-option__preview {
+  display: block;
+  height: 84px;
+  background-image: var(--preview);
+  background-position: center;
+  background-size: cover;
+}
+
+.wallpaper-option__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 11px;
+  font-size: 11.5px;
+}
+
+.wallpaper-option__label .ms {
+  font-size: 15px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+
+.wallpaper-option[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.wallpaper-option[aria-pressed="true"] .wallpaper-option__label .ms {
+  opacity: 1;
+}
+
+/* --- Toast ------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  bottom: 86px;
+  left: 50%;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 12px;
+  background: var(--popover-bg);
+  box-shadow: var(--shadow-pill);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.toast .ms {
+  font-size: 16px;
+  color: var(--good);
+}
+
+/* --- Responsive -------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 62px 10px 16px;
+  }
+
+  .palette,
+  .sheet {
+    border-radius: 18px;
+  }
+
+  .palette__foot .mono {
+    display: none;
+  }
+
+  .setting--row {
+    gap: 12px;
+  }
+
+  .sheet__head,
+  .sheet__body,
+  .wallpaper-grid,
+  .sheet__foot {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .wallpaper-option__preview {
+    height: 66px;
+  }
+}
+
+@media (max-width: 420px) {
+  .palette__kind {
+    display: none;
+  }
+
+  .wallpaper-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
