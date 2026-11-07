@@ -545,7 +545,7 @@
     const placeholder = target.closest('a[href="#"]');
     if (placeholder) {
       event.preventDefault();
-      toast("Placeholder link — point it at your real URL", "info");
+      toast("### em construicao ###", "info");
     }
   });
 
