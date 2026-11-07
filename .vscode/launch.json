@@ -9,7 +9,7 @@
             "request": "launch",
             "reAttach": true,
             "name": "Open index.html",
-            "file": "/home/etternalize/Documents/maidMod/src/index.html",
+            "file": "/home/etternalize/Documents/maidMod/index.html",
             "firefoxExecutable": "/usr/bin/zen-browser"
         }
     ]
