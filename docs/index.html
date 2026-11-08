@@ -94,7 +94,7 @@
               <span class="ms" aria-hidden="true">grid_view</span>Ver Projetos
             </a>
             <a class="btn btn--ghost" href="#" download>
-              <span class="ms" aria-hidden="true">arrow_forward</span>Baixar Curriculo
+              <span class="ms" aria-hidden="true">arrow_forward</span>Linkedln
             </a>
           </div>
 
@@ -247,7 +247,7 @@
                 <div class="chips">
                   <span class="chip chip--accent">html</span><span class="chip chip--accent">css</span>
                   <span class="chip chip--accent">javascript</span><span class="chip">nix</span><span class="chip">C</span><span class="chip">SQL</span> 
-                  <span class="chip">qml / quickshell</span><span class="chip">flakes</span><span class="chip">JS</span>
+                  <span class="chip">qml / quickshell</span><span class="chip">flakes</span><span class="chip">JS</span><span class="chip">lua</span>
                 </div>
               </div>
               <div class="skill-group">
@@ -272,7 +272,7 @@
               <p class="skill-group__name">daily driver</p>
               <dl class="setup">
                 <div class="setup-row"><dt>os</dt><dd>Artix / NixOS / Alpine</dd></div>
-                <div class="setup-row"><dt>wm</dt><dd>hyprland</dd></div>
+                <div class="setup-row"><dt>wm</dt><dd>Hyprland / Niri</dd></div>
                 <div class="setup-row"><dt>editor</dt><dd>nano, vscode, codeoss, onlinegdb</dd></div>
                 <div class="setup-row"><dt>terminal</dt><dd>kitty</dd></div>
                 <div class="setup-row"><dt>theme</dt><dd>matugen, pywall</dd></div>
@@ -317,10 +317,10 @@
 
     <!-- Dock --------------------------------------------------------- -->
     <nav class="dock" aria-label="Quick navigation">
-      <a class="dock__btn" href="#home" data-nav="home" aria-label="Home" data-label="Home"><span class="ms" aria-hidden="true">home</span></a>
-      <a class="dock__btn" href="#work" data-nav="Work" aria-label="Selected Work" data-label="Work"><span class="ms" aria-hidden="true">grid_view</span></a>
-      <a class="dock__btn" href="#about" data-nav="about" aria-label="About" data-label="About"><span class="ms" aria-hidden="true">person</span></a>
-      <a class="dock__btn" href="#contact" data-nav="contact" aria-label="Contact" data-label="Contact"><span class="ms" aria-hidden="true">mail</span></a>
+      <a class="dock__btn" href="#home" data-nav="home" aria-label="Inicio" data-label="Inicio"><span class="ms" aria-hidden="true">home</span></a>
+      <a class="dock__btn" href="#work" data-nav="Projetos" aria-label="Projetos" data-label="Projetos"><span class="ms" aria-hidden="true">grid_view</span></a>
+      <a class="dock__btn" href="#about" data-nav="Sobre" aria-label="Sobre" data-label="Sobre"><span class="ms" aria-hidden="true">person</span></a>
+      <a class="dock__btn" href="#contact" data-nav="Contato" aria-label="Contato" data-label="Contato"><span class="ms" aria-hidden="true">mail</span></a>
       <span class="dock__divider" aria-hidden="true"></span>
       <button class="dock__btn" type="button" data-open="launcher" aria-label="Search (Ctrl K)" data-label="Search"><span class="ms" aria-hidden="true">search</span></button>
       <button class="dock__btn" type="button" data-open="settings" aria-label="Quick settings" data-label="Settings"><span class="ms" aria-hidden="true">tune</span></button>
@@ -382,19 +382,19 @@
         </div>
 
         <div class="setting setting--row">
-          <div class="setting__label"><span>Motion</span><small>Transitions and ambient animation</small></div>
+          <div class="setting__label"><span>Anims</span><small>Transições e animações do ambiente</small></div>
           <button class="switch" type="button" role="switch" data-toggle="motion" aria-checked="true" aria-label="Motion"><span></span></button>
         </div>
 
         <div class="setting">
-          <div class="setting__label"><span>Brightness</span><small><span id="brightness-value">100%</span></small></div>
+          <div class="setting__label"><span>Brilho</span><small><span id="brightness-value">100%</span></small></div>
           <input id="brightness" type="range" min="40" max="100" step="1" value="100" aria-label="Screen brightness" />
         </div>
       </div>
 
       <footer class="sheet__foot">
-        <button class="btn btn--ghost btn--small" type="button" data-reset>Reset defaults</button>
-        <span class="mono muted">saved locally</span>
+        <button class="btn btn--ghost btn--small" type="button" data-reset>Reiniciar Configs</button>
+        <span class="mono muted">Salvo Localmente</span>
       </footer>
     </section>
   </div>
@@ -405,7 +405,7 @@
       <header class="sheet__head">
         <div>
           <p class="eyebrow">wallpaper</p>
-          <h2 id="wallpaper-title">Pick a backdrop</h2>
+          <h2 id="wallpaper-title">Selecione um Wallpaper</h2>
         </div>
         <button class="icon-btn" type="button" data-close aria-label="Close wallpaper picker"><span class="ms" aria-hidden="true">close</span></button>
       </header>
@@ -430,15 +430,15 @@
       </div>
 
       <footer class="sheet__foot">
-        <span class="mono muted">4 backdrops, zero network requests</span>
-        <button class="btn btn--ghost btn--small" type="button" data-close>Done</button>
+        <span class="mono muted">4 wallpapers</span>
+        <button class="btn btn--ghost btn--small" type="button" data-close>Fechar</button>
       </footer>
     </section>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
     <span class="ms" id="toast-icon" aria-hidden="true">check</span>
-    <span id="toast-message">Copied to clipboard</span>
+    <span id="toast-message">Copiado para o Ctrl-V</span>
   </div>
 
   <script src="js/app.js" defer></script>

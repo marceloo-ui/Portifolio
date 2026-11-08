@@ -1,12 +1,7 @@
 /* ==========================================================================
    Design tokens
    --------------------------------------------------------------------------
-   The palette below is torn straight out of matugen's generated
-   ~/.local/state/quickshell/generated/colors.json, so the site starts out
-   matching the current Hyprland / israshell theme.
-
-   Want a different palette? Change these values, or add a new [data-accent]
-   block and a swatch button in index.html.
+   Paleta de cores diretamente do matugen
    ========================================================================== */
 
 :root {

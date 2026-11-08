@@ -531,14 +531,14 @@
 
     const copyBtn = target.closest("[data-copy-email]");
     if (copyBtn) {
-      copyText(copyBtn.dataset.copyEmail, "Email copied to clipboard");
+      copyText(copyBtn.dataset.copyEmail, "Email copiado para o Crtl+V");
       return;
     }
 
     if (target.closest("[data-reset]")) {
       prefs = { ...DEFAULT_PREFS };
       applyPrefs();
-      toast("Defaults restored", "refresh");
+      toast("Restaurado", "refresh");
       return;
     }
 
