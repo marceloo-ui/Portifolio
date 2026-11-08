@@ -7,8 +7,9 @@ Pequeno projeto pessoal meu para um portfólio inspirado em [Quickshell](https:/
 ## Algumas fotos do site
 
 <p align="center">
-  <img src="docs/screenshots/S1.png" width="50%" alt="Menu">
-  <img src="docs/screenshots/S2.png" width="50%" alt="Diga oi :)">
+  <img src="docs/screenshots/S1.png" width="38%" alt="Menu">
+  <img src="docs/screenshots/S2.png" width="38%" alt="Diga oi :)">
+  <img src="docs/screenshots/S3.png" width="22%" alt="Launcherzin">
 </p>
 
 ## Inspirações
@@ -20,4 +21,6 @@ Pequeno projeto pessoal meu para um portfólio inspirado em [Quickshell](https:/
 | [Rofi](https://github.com/davatorium/rofi) | AppLauncher, Usei a base dele para fazer o meu próprio |
 | [LDMS](https://duxlabs.dev/) | Mais uma grande Inspiração para o site |
 | [Matugen](https://github.com/InioX/matugen) | Usado para cores |
+| [II](https://ii.clsty.link/en/) | Por fim, Minha maior inspiração para esse projeto |
 
+> Feito com amor e carinho por [marceloo-ui](https://github.com/marceloo-ui)
