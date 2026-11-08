@@ -12,6 +12,10 @@ Pequeno projeto pessoal meu para um portfólio inspirado em [Quickshell](https:/
   <img src="docs/screenshots/S3.png" width="22%" alt="Launcherzin">
 </p>
 
+## Link
+
+O site está sendo hospedado pelo próprio GitHub: https://github.com/marceloo-ui/Portifolio
+
 ## Inspirações
 
 | Links | Conteúdo |
