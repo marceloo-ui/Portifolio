@@ -545,7 +545,7 @@
     const placeholder = target.closest('a[href="#"]');
     if (placeholder) {
       event.preventDefault();
-      toast("### em construicao ###", "info");
+      toast("### em construcao ###", "info");
     }
   });
 

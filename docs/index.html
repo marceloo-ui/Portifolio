@@ -19,20 +19,19 @@
   <link rel="stylesheet" href="css/overlays.css" />
 
   <script>
-    // Apply saved theme before paint so there is no flash.
     document.documentElement.classList.add("js");
     try {
       const saved = JSON.parse(localStorage.getItem("etternalize.prefs") || "{}");
       if (saved.theme === "light") document.documentElement.dataset.theme = "light";
       if (saved.accent) document.documentElement.dataset.accent = saved.accent;
-    } catch { /* localStorage unavailable — defaults are fine */ }
+    } catch {}
   </script>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Pule para o Conteudo</a>
 
-  <!-- Wallpaper stack ------------------------------------------------ -->
+  <!-- ws ------------------------------------------------ -->
   <div class="wallpaper" aria-hidden="true">
     <img class="wallpaper__image" src="assets/wallpaper.webp" alt="" decoding="async" fetchpriority="high" />
     <div class="wallpaper__wash"></div>
@@ -42,7 +41,7 @@
   <div class="screen-dim" aria-hidden="true"></div>
 
   <div class="shell">
-    <!-- Top bar ------------------------------------------------------ -->
+    <!-- barra ------------------------------------------------------ -->
     <header class="topbar">
       <div class="topbar__inner">
         <nav class="workspaces" aria-label="Jump to section">
@@ -87,7 +86,7 @@
           <p class="pill"><span class="dot"></span>open to work · Home/Presencial</p>
           <h1 class="hero__title">Ola, sou Marcelo, eu crio pequenos e <em>over-designed</em> projetos.</h1>
           <p class="hero__lede">
-            Cibersegurança e GNU/Linux ricing fan. Gosto de LLMS/Local IA e Agents.
+            Cibersegurança e GNU/Linux ricing fan. LLMS/Local IA e Agents.
           </p>
 
           <div class="hero__actions">
@@ -137,7 +136,7 @@
           </div>
         </div>
       </section>
-      <!-- Selected work --------------------------------------------- -->
+      <!-- projetos --------------------------------------------- -->
       <section class="section" id="work" data-section data-icon="grid_view" data-title="Trabalho" data-sub="Projetos &amp; experimentos">
         <div class="section-head reveal">
           <div class="section-head__text">
@@ -224,7 +223,7 @@
           </a>
         </div>
       </section>
-      <!-- About ----------------------------------------------------- -->
+      <!-- sobre ----------------------------------------------------- -->
       <section class="section" id="about" data-section data-icon="person" data-title="Sobre" data-sub="Bio, habilidades &amp; setup">
         <div class="section-head reveal">
           <div class="section-head__text">
@@ -239,7 +238,7 @@
             <p>
               Sou Marcelo, uma pessoa que sempre foi apaixonada por <em>programação</em>.
               comecei desde cedo arrumando computadores e notebooks e agora estou aqui,
-              criando interfaces, sistemas e estudando para ser um desenvolvedor.
+              criando interfaces, sistemas e estudando para ser um DevOpSec.
             </p>
 
             <div class="skills">
@@ -272,18 +271,18 @@
             <div>
               <p class="skill-group__name">daily driver</p>
               <dl class="setup">
-                <div class="setup-row"><dt>os</dt><dd>Artix</dd></div>
+                <div class="setup-row"><dt>os</dt><dd>Artix / NixOS / Alpine</dd></div>
                 <div class="setup-row"><dt>wm</dt><dd>hyprland</dd></div>
                 <div class="setup-row"><dt>editor</dt><dd>nano, vscode, codeoss, onlinegdb</dd></div>
                 <div class="setup-row"><dt>terminal</dt><dd>kitty</dd></div>
-                <div class="setup-row"><dt>theme</dt><dd>matugen</dd></div>
+                <div class="setup-row"><dt>theme</dt><dd>matugen, pywall</dd></div>
               </dl>
             </div>
           </aside>
         </div>
       </section>
 
-      <!-- Contact --------------------------------------------------- -->
+      <!-- Contato --------------------------------------------------- -->
       <section class="section" id="Contato" data-section data-icon="mail" data-title="Contato" data-sub="Diga oi">
         <div class="window contact reveal">
           <p class="eyebrow">04 — contato</p>
@@ -328,7 +327,7 @@
     </nav>
   </div>
 
-  <!-- Command palette ----------------------------------------------- -->
+  <!-- cmd ----------------------------------------------- -->
   <div class="overlay" id="panel-launcher" data-panel="launcher" hidden>
     <div class="palette" role="dialog" aria-modal="true" aria-labelledby="launcher-label">
       <label class="sr-only" id="launcher-label" for="launcher-input">Pesquisar</label>
@@ -346,28 +345,28 @@
     </div>
   </div>
 
-  <!-- Appearance settings ------------------------------------------- -->
+  <!-- configs ------------------------------------------- -->
   <div class="overlay" id="panel-settings" data-panel="settings" hidden>
     <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="settings-title">
       <header class="sheet__head">
         <div>
-          <p class="eyebrow">quick settings</p>
-          <h2 id="settings-title">Appearance</h2>
+          <p class="eyebrow">Configs</p>
+          <h2 id="settings-title">Aparência</h2>
         </div>
         <button class="icon-btn" type="button" data-close aria-label="Close settings"><span class="ms" aria-hidden="true">close</span></button>
       </header>
 
       <div class="sheet__body">
         <div class="setting">
-          <div class="setting__label"><span>Theme</span><small>Wallpaper-matched light or dark surfaces</small></div>
+          <div class="setting__label"><span>Temas</span><small>Escuro ou Branco</small></div>
           <div class="segmented" role="group" aria-label="Theme">
-            <button type="button" data-set-theme="dark"><span class="ms" aria-hidden="true">dark_mode</span>Dark</button>
-            <button type="button" data-set-theme="light"><span class="ms" aria-hidden="true">light_mode</span>Light</button>
+            <button type="button" data-set-theme="dark"><span class="ms" aria-hidden="true">dark_mode</span>Escuro</button>
+            <button type="button" data-set-theme="light"><span class="ms" aria-hidden="true">light_mode</span>Branco</button>
           </div>
         </div>
 
         <div class="setting">
-          <div class="setting__label"><span>Accent</span><small>Straight from the matugen palette</small></div>
+          <div class="setting__label"><span>Cores</span><small>Direto da paleta do matugen</small></div>
           <div class="swatches" role="group" aria-label="Accent colour">
             <button class="swatch" type="button" data-set-accent="sky" style="--swatch:#8fcef3" aria-label="Sky" title="Sky" aria-pressed="true"></button>
             <button class="swatch" type="button" data-set-accent="lavender" style="--swatch:#cac1ea" aria-label="Lavender" title="Lavender" aria-pressed="false"></button>
@@ -378,7 +377,7 @@
         </div>
 
         <div class="setting setting--row">
-          <div class="setting__label"><span>Blur</span><small>Translucent glass surfaces</small></div>
+          <div class="setting__label"><span>Blur</span><small>Superfície translúcidas</small></div>
           <button class="switch" type="button" role="switch" data-toggle="blur" aria-checked="true" aria-label="Blur"><span></span></button>
         </div>
 
@@ -400,7 +399,7 @@
     </section>
   </div>
 
-  <!-- Wallpaper picker ---------------------------------------------- -->
+  <!-- wp ---------------------------------------------- -->
   <div class="overlay" id="panel-wallpaper" data-panel="wallpaper" hidden>
     <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="wallpaper-title">
       <header class="sheet__head">
