@@ -124,6 +124,40 @@
   }
 
   /* ---------------------------------------------------------------------
+     Greeting (Bom dia / Boa tarde / Boa noite)
+     --------------------------------------------------------------------- */
+
+  const greetingEl = $("[data-greeting]");
+  const greetings = ["Bom dia", "Boa tarde", "Boa noite"];
+
+  function startGreeting() {
+    if (!greetingEl) return;
+
+    let greetingIndex = 0;
+
+    window.setInterval(() => {
+      greetingIndex = (greetingIndex + 1) % greetings.length;
+      const next = greetings[greetingIndex];
+      const reduceMotion =
+        body.dataset.motion === "off" ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduceMotion) {
+        greetingEl.textContent = next;
+        return;
+      }
+
+      greetingEl.classList.add("is-swapping");
+      window.setTimeout(() => {
+        greetingEl.textContent = next;
+      }, 190);
+      window.setTimeout(() => {
+        greetingEl.classList.remove("is-swapping");
+      }, 420);
+    }, 3000);
+  }
+
+  /* ---------------------------------------------------------------------
      Overlays (launcher / settings / wallpaper)
      --------------------------------------------------------------------- */
 
@@ -672,6 +706,7 @@
   applyPrefs();
   tickClock();
   window.setInterval(tickClock, 10000);
+  startGreeting();
 
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
